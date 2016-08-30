@@ -32,14 +32,14 @@ def dl_links(json_input, output, mode='default'):
                     else:
                         break
 
-            if mode == 'light':
-                config['files']['dotup_light'] = sorted_links[-1]['id']
+        if mode == 'light':
+            config['files']['dotup_light'] = sorted_links[-1]['id']
 
-            else:
-                config['files']['dotup'] = sorted_links[-1]['id']
+        else:
+            config['files']['dotup'] = sorted_links[-1]['id']
 
-            with open('../scrapy.cfg', 'w') as cfg:
-                config.write(cfg)
+        with open('../scrapy.cfg', 'w') as cfg:
+            config.write(cfg)
 
 
 if __name__ == '__main__':
