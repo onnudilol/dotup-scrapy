@@ -23,14 +23,10 @@ def dl_links(json_input, output, mode='default'):
                 if mode == 'light':
                     if link['id'] > config['files']['dotup_light']:
                         out.write(link['url'] + '\n')
-                    else:
-                        break
 
                 else:
                     if link['id'] > config['files']['dotup']:
                         out.write(link['url'] + '\n')
-                    else:
-                        break
 
         if mode == 'light':
             config['files']['dotup_light'] = sorted_links[-1]['id']
