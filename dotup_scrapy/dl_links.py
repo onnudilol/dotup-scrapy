@@ -40,14 +40,14 @@ def dl_links(json_input, output, mode='default'):
 
 if __name__ == '__main__':
     parser = ArgumentParser(description='Output txt file from json to download with wget.')
-    parser.add_argument('--input', '-i', help='The json file input.')
+    parser.add_argument('--input-json', '-i', help='The json file input.')
     parser.add_argument('--output', '-o', help='The txt file output.')
     parser.add_argument('--mode', '-m', choices=['default', 'light'],
                         default='default', help='The function mode.')
     args = parser.parse_args()
 
     if len(sys.argv) > 1:
-        dl_links(args.input, args.output, args.mode)
+        dl_links(args.input_json, args.output, args.mode)
 
     else:
         parser.print_help()

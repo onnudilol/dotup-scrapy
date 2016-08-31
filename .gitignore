@@ -1,2 +1,4 @@
 *.json
 .idea/
+*.txt
+!requirements.txt
