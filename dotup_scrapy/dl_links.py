@@ -15,24 +15,24 @@ def dl_links(json_input, output, mode='default'):
 
     with open(json_input) as json_data:
         links = json.load(json_data)
-        sorted_links = sorted(links, key=itemgetter('id'))
+        links.sort(key=itemgetter('id'))
 
         with open(output, 'a') as out:
 
-            for link in sorted_links:
+            for link in links:
                 if mode == 'light':
-                    if int(link['id']) > int(config['files']['dotup_light']):
+                    if link['id'] > int(config['files']['dotup_light']):
                         out.write(link['url'] + '\n')
 
                 else:
-                    if int(link['id']) > int(config['files']['dotup']):
+                    if link['id'] > int(config['files']['dotup']):
                         out.write(link['url'] + '\n')
 
         if mode == 'light':
-            config['files']['dotup_light'] = sorted_links[-1]['id']
+            config['files']['dotup_light'] = str(links[-1]['id'])
 
         else:
-            config['files']['dotup'] = sorted_links[-1]['id']
+            config['files']['dotup'] = str(links[-1]['id'])
 
         with open('../scrapy.cfg', 'w') as cfg:
             config.write(cfg)

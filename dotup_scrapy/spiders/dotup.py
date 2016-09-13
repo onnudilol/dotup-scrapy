@@ -19,7 +19,7 @@ class DotupSpider(scrapy.Spider):
             url = response.urljoin(sel.xpath('td/a/@href').extract()[0][1:-5])
 
             item = DotupItem()
-            item['id'] = self.id_re.search(url).group(1)
+            item['id'] = int(self.id_re.search(url).group(1))
             item['url'] = url
             item['original'] = sel.xpath('td[6]/text()').extract()[0]
 
