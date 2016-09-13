@@ -33,10 +33,10 @@ def dl_links(json_input, output, mode='default'):
                         break
 
         if mode == 'light':
-            config['files']['dotup_light'] = str(links[-1]['id'])
+            config['files']['dotup_light'] = str(links[0]['id'])
 
         else:
-            config['files']['dotup'] = str(links[-1]['id'])
+            config['files']['dotup'] = str(links[0]['id'])
 
         with open('../scrapy.cfg', 'w') as cfg:
             config.write(cfg)
