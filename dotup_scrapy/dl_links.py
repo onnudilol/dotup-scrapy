@@ -15,7 +15,7 @@ def dl_links(json_input, output, mode='default'):
 
     with open(json_input) as json_data:
         links = json.load(json_data)
-        links.sort(key=itemgetter('id'))
+        links.sort(key=itemgetter('id'), reverse=True)
 
         with open(output, 'a') as out:
 
@@ -23,10 +23,14 @@ def dl_links(json_input, output, mode='default'):
                 if mode == 'light':
                     if link['id'] > int(config['files']['dotup_light']):
                         out.write(link['url'] + '\n')
+                    else:
+                        break
 
                 else:
                     if link['id'] > int(config['files']['dotup']):
                         out.write(link['url'] + '\n')
+                    else:
+                        break
 
         if mode == 'light':
             config['files']['dotup_light'] = str(links[-1]['id'])
