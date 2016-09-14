@@ -7,6 +7,8 @@ import sys
 
 config = ConfigParser()
 config.read('../scrapy.cfg')
+id_default = int(config['files']['dotup'])
+id_light = int(config['files']['dotup_light'])
 
 
 def dl_links(json_input, output, mode='default'):
@@ -21,13 +23,13 @@ def dl_links(json_input, output, mode='default'):
 
             for link in links:
                 if mode == 'light':
-                    if link['id'] > int(config['files']['dotup_light']):
+                    if link['id'] > id_default:
                         out.write(link['url'] + '\n')
                     else:
                         break
 
                 else:
-                    if link['id'] > int(config['files']['dotup']):
+                    if link['id'] > id_light:
                         out.write(link['url'] + '\n')
                     else:
                         break
