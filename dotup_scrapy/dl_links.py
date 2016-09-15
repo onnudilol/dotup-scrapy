@@ -23,13 +23,13 @@ def dl_links(json_input, output, mode='default'):
 
             for link in links:
                 if mode == 'light':
-                    if link['id'] > id_default:
+                    if link['id'] > id_light:
                         out.write(link['url'] + '\n')
                     else:
                         break
 
                 else:
-                    if link['id'] > id_light:
+                    if link['id'] > id_default:
                         out.write(link['url'] + '\n')
                     else:
                         break
